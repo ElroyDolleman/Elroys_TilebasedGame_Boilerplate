@@ -1,0 +1,61 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "levels/playground.tmx",
+    "expandedProjectPaths": [
+        "entity_templates",
+        "tilesets",
+        "previews",
+        "levels",
+        "."
+    ],
+    "fileStates": {
+        "levels/playground.tmx": {
+            "scale": 2,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 201,
+                "y": 101.5
+            }
+        },
+        "previews/Previews.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "previews/entity_previews.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/default_tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "C:/Projects/elroys_phaser3_tilebased_boilerplate/assets/leveleditor/previews",
+    "last.objectTemplatePath": "C:/Projects/elroys_phaser3_tilebased_boilerplate/assets/leveleditor/entity_templates",
+    "map.height": 15,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 20,
+    "openFiles": [
+        "levels/playground.tmx",
+        "tilesets/default_tileset.tsx",
+        "previews/entity_previews.tsx"
+    ],
+    "project": "elroy_boilerplate.tiled-project",
+    "property.type": "TileTypes",
+    "recentFiles": [
+        "previews/entity_previews.tsx",
+        "tilesets/default_tileset.tsx",
+        "levels/playground.tmx",
+        "previews/Previews.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

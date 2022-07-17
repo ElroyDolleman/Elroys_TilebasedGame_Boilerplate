@@ -1,0 +1,23 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "extensionsPath": "extensions",
+    "folders": [
+        "."
+    ],
+    "propertyTypes": [
+        {
+            "id": 1,
+            "name": "TileTypes",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "Solid",
+                "SemiSolid",
+                "Empty"
+            ],
+            "valuesAsFlags": false
+        }
+    ]
+}

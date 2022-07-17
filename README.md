@@ -1,2 +1,2 @@
-# Elroys_TilebasedGame_Boilerplate
- Boilerplate for tilebased games
+# Elroys Tilebased Game Boilerplate
+Boilerplate for tilebased games with a focus on platforming.
