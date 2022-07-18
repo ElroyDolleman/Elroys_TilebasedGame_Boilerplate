@@ -13,7 +13,7 @@ window.game = new Phaser.Game({
 	height: 240,
 	zoom: 3,
 	pixelArt: true,
-	backgroundColor: '#333333',
+	backgroundColor: '#3CBCFC',
 	parent: GAME_TITLE,
 	title: GAME_TITLE,
 	version: '0.0.1',

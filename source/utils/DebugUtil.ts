@@ -32,18 +32,21 @@ class DebugUtilClass
 		this._debugGraphics = SceneManager.instance.currentScene.add.graphics();
 
 		this._debugInput = InputManager.instance.createKeyInput('U');
-		this._debugInput.phaserKey.addListener('keyup', this._toggleActive, this);
-
-		this._toggleActive();
 	}
 
 	private _toggleActive(): void
 	{
 		this._active = !this._active;
+		this._debugGraphics.clear();
 	}
 
 	private _update(): void
 	{
+		if (this._debugInput?.heldDownFrames === 1)
+		{
+			this._toggleActive();
+		}
+
 		if (this._active)
 		{
 			this._draw();

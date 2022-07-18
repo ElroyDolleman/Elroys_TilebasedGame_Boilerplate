@@ -53,8 +53,6 @@ export class Tile
 			this.sprite.setOrigin(0.5, 0.5);
 		}
 
-		console.log(config.tileId);
-
 		this.hitbox = new Phaser.Geom.Rectangle(this.position.x, this.position.y, TileConfigs.TILE_WIDTH, TileConfigs.TILE_HEIGHT);
 
 		this._setProperties(config.properties);
@@ -72,7 +70,6 @@ export class Tile
 			switch(prop.name)
 			{
 			case 'type':
-				console.log(prop.value);
 				this.tileType = TileTypes[prop.value as keyof typeof TileTypes];
 				break;
 			default:
