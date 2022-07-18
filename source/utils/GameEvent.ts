@@ -47,7 +47,7 @@ export class GameEvent<T>
 		for (let i = 0; i < this._subscribers.length; i++)
 		{
 			let element = this._subscribers[i];
-			element.callback(data);
+			element.callback.call(element.scope, data);
 
 			if (element.once)
 			{

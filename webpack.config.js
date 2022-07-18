@@ -8,6 +8,8 @@ const assetsPath = helperFuncs.getAssetsOutputFolder();
 const htmlPath = './html/';
 const entryFile = './source/app.ts';
 
+const gameTitle = '"My Awesome Game"';
+
 module.exports = env => {
 	if (env.type === undefined)
 	{
@@ -54,7 +56,7 @@ module.exports = env => {
 				DEV: "false",
 				PROD: "false",
 				[env.type.toUpperCase()]: "true",
-				DEBUG_MODE: env.debugmode ? env.debugmode : "false"
+				GAME_TITLE: gameTitle,
 			}),
 		],
 		devServer: {

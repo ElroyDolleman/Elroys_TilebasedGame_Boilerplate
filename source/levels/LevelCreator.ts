@@ -48,7 +48,7 @@ export class LevelCreator
 
 		for (let i = 0; i < layerData.tiles.length; i++)
 		{
-			const tileNum = layerData.tiles[i];
+			const tileNum = layerData.tiles[i] - 1;
 			const cellX = i % layerData.width;
 			const cellY = Math.floor(i / layerData.width);
 			const posX = cellX * TileConfigs.TILE_WIDTH;
@@ -66,14 +66,12 @@ export class LevelCreator
 			let tile = new Tile({
 				scene: this.scene,
 				tilesetName: tilesetData.name,
-				tileId: (tileData ? tileData.id : tileNum) - 1,
+				tileId: tileData ? tileData.id : tileNum,
 				properties: tileData ? tileData.properties : [],
 				width: TileConfigs.TILE_WIDTH,
 				height: TileConfigs.TILE_HEIGHT,
-				cellX,
-				cellY,
-				posX,
-				posY,
+				cellX, cellY,
+				posX, posY,
 			});
 			tiles.push(tile);
 		}

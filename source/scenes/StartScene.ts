@@ -12,11 +12,6 @@ export class StartScene extends BaseScene
 		super({ key: SceneNames.StartScene, active: true});
 	}
 
-	public init(data: any): void
-	{
-
-	}
-
 	public preload(): void
 	{
 
@@ -24,6 +19,8 @@ export class StartScene extends BaseScene
 
 	public create(): void
 	{
+		super.create();
+
 		let lvlLoader = new LevelCreator(this);
 		lvlLoader.generateLevel('playground');
 	}

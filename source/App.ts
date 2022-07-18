@@ -1,6 +1,7 @@
 import 'phaser';
 import { StartScene } from './scenes/StartScene';
 import { GameScene } from './scenes/GameScene';
+import { DebugUtil } from './utils/DebugUtil';
 
 declare global {
 	interface Window { game: Phaser.Game; }
@@ -13,8 +14,8 @@ window.game = new Phaser.Game({
 	zoom: 3,
 	pixelArt: true,
 	backgroundColor: '#333333',
-	parent: 'Game Title',
-	title: 'Game Title',
+	parent: GAME_TITLE,
+	title: GAME_TITLE,
 	version: '0.0.1',
 	disableContextMenu: true,
 	scene: [ StartScene, GameScene ],
@@ -22,3 +23,5 @@ window.game = new Phaser.Game({
 	// 	default: 'arcade',
 	// },
 });
+
+DebugUtil?.initialize();

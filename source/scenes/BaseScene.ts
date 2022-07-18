@@ -4,6 +4,7 @@ import { SceneNames } from './ScenesConfig';
 export abstract class BaseScene extends Phaser.Scene
 {
 	public readonly name: SceneNames;
+	protected _initData: any;
 
 	public constructor(config: { key: SceneNames; active: boolean })
 	{
@@ -14,6 +15,12 @@ export abstract class BaseScene extends Phaser.Scene
 
 	public init(data: any): void
 	{
-		SceneManager.instance.onSceneChanged.emit({ sceneName: this.name, data });
+		this._initData = data;
+		SceneManager.instance.onSceneChanged.emit({ sceneName: this.name, data: this._initData });
+	}
+
+	public create(): void
+	{
+		// SceneManager.instance.onSceneChanged.emit({ sceneName: this.name, data: this._initData });
 	}
 }

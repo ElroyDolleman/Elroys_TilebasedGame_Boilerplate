@@ -1,36 +1,31 @@
 export class KeyInput
 {
-	public get heldDownFrames(): number
+	public get heldDownFrames(): number { return this._heldDownFrames; }
+	public set heldDownFrames(f: number)
 	{
-		return this._heldDownFrames;
-	}
-	public get isDown(): boolean
-	{
-		return this._heldDownFrames > 0;
-	}
-	public get justDown(): boolean
-	{
-		return this._heldDownFrames === 1;
-	}
-	public get justReleased(): boolean
-	{
-		return this._prevHeldDownFrames > 0 && this._heldDownFrames === 0;
+		this._heldDownFrames = f;
+		this._prevHeldDownFrames = Math.max(f - 1, 0);
 	}
 
-	private _key: Phaser.Input.Keyboard.Key;
+	public get isDown(): boolean { return this._heldDownFrames > 0; }
+	public get justDown(): boolean { return this._heldDownFrames === 1; }
+	public get justReleased(): boolean { return this._prevHeldDownFrames > 0 && this._heldDownFrames === 0; }
+
+	public readonly phaserKey: Phaser.Input.Keyboard.Key;
+
 	private _heldDownFrames: number;
 	private _prevHeldDownFrames: number;
 
 	public constructor(key: Phaser.Input.Keyboard.Key)
 	{
-		this._key = key;
+		this.phaserKey = key;
 	}
 
 	public update(): void
 	{
 		this._prevHeldDownFrames = this._heldDownFrames;
 
-		if (this._key.isDown)
+		if (this.phaserKey.isDown)
 		{
 			this._heldDownFrames++;
 		}
@@ -42,6 +37,6 @@ export class KeyInput
 
 	public destroy(): void
 	{
-		this._key.destroy();
+		this.phaserKey.destroy();
 	}
 }

@@ -5,7 +5,6 @@
 	"main": "index.js",
 	"scripts": {
 		"build-dev": "webpack --env=type=dev",
-		"build-debugmode": "webpack --env=type=dev --env=debugmode=true",
 		"build-dev-full": "npm run export-all && npm run build-dev",
 		"build-prod": "npm run export-all && webpack --env=type=prod",
 

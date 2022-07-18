@@ -37,7 +37,7 @@ let exportLevels = async() =>
 		}
 
 		let jsonString = JSON.stringify(json);
-		jsonString = jsonString.replaceAll('../../assets/leveleditor/tilesets/', '').replaceAll('.tsx', '');
+		jsonString = jsonString.replaceAll('../../../assets/leveleditor/tilesets/', '').replaceAll('.tsx', '');
 		jsonString = jsonString.replaceAll('"source"', '"name"');
 		jsonString = jsonString.replaceAll('"objects"', '"entities"');
 		jsonString = jsonString.replaceAll('"data"', '"tiles"');

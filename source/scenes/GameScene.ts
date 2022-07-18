@@ -8,19 +8,14 @@ export class GameScene extends BaseScene
 		super({ key: SceneNames.GameScene, active: false});
 	}
 
-	public init(data: any): void
-	{
-		super.init(data);
-	}
-
 	public preload(): void
 	{
-		console.log('preload');
+
 	}
 
 	public create(): void
 	{
-		console.log('create');
+		super.create();
 	}
 
 	public update(): void

@@ -13,12 +13,19 @@ export class AssetLoader
 			return Promise.resolve(sceneToUse.cache.json.get(name));
 		}
 
-		return new Promise<any>(resolve =>
+		return new Promise<any>((resolve, reject) =>
 		{
 			sceneToUse.load.json(name, `assets/${name}.json`);
-			sceneToUse.load.once(Phaser.Loader.Events.COMPLETE, () =>
+			sceneToUse.load.once(Phaser.Loader.Events.COMPLETE, (test: Phaser.Loader.LoaderPlugin) =>
 			{
-				resolve(sceneToUse.cache.json.get(name));
+				if (sceneToUse.cache.json.has(name))
+				{
+					resolve(sceneToUse.cache.json.get(name));
+				}
+				else
+				{
+					reject('Loading ' + name + ' failed.');
+				}
 			});
 			sceneToUse.load.start();
 		});
