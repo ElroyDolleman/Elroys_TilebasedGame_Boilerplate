@@ -1,7 +1,7 @@
 const helperFuncs = require('./HelperFunctions');
 
 const tilesetsPath = './assets/leveleditor/tilesets/';
-const outputPath = './build/assets/';
+const outputPath = helperFuncs.getAssetsOutputFolder();
 
 let exportLevels = async() =>
 {

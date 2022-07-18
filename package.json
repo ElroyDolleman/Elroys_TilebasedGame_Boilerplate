@@ -6,11 +6,16 @@
 	"scripts": {
 		"build-dev": "webpack --env=type=dev",
 		"build-debugmode": "webpack --env=type=dev --env=debugmode=true",
-		"build-prod": "webpack --env=type=prod",
+		"build-dev-full": "npm run export-all && npm run build-dev",
+		"build-prod": "npm run export-all && webpack --env=type=prod",
+
 		"server-dev": "http-server build/dev",
 		"server-prod": "http-server build/prod",
+
+		"export-all": "npm run export-levels && npm run export-tilesets",
 		"export-levels": "node scripts/ExportLevels.js",
 		"export-tilesets": "node scripts/ExportTilesets.js",
+
 		"eslint": "npx eslint source/** --fix"
 	},
 	"author": "Elroy Dolleman",

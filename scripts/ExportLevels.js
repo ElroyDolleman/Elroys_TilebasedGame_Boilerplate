@@ -1,7 +1,7 @@
 const helperFuncs = require('./HelperFunctions');
 
 const levelsPath = './assets/leveleditor/levels/';
-const outputPath = './build/assets/';
+const outputPath = helperFuncs.getAssetsOutputFolder();
 
 let exportLevels = async() =>
 {

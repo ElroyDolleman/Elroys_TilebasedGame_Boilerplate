@@ -69,5 +69,35 @@ module.exports = {
 				}
 			});
 		});
+	},
+
+	getBuildFolder: () =>
+	{
+		const path = './build/';
+
+		if (!fs.existsSync(path)) {
+			fs.mkdirSync(path);
+		}
+		return path;
+	},
+
+	getBuildFilesFolder: () =>
+	{
+		const path = module.exports.getBuildFolder() + 'build_files/';
+
+		if (!fs.existsSync(path)) {
+			fs.mkdirSync(path);
+		}
+		return path;
+	},
+
+	getAssetsOutputFolder: () =>
+	{
+		const path = module.exports.getBuildFilesFolder() + 'assets/';
+
+		if (!fs.existsSync(path)) {
+			fs.mkdirSync(path);
+		}
+		return path;
 	}
 };
