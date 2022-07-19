@@ -11,9 +11,10 @@
 		"server-dev": "http-server build/dev",
 		"server-prod": "http-server build/prod",
 
-		"export-all": "npm run export-levels && npm run export-tilesets",
+		"export-all": "npm run export-levels && npm run export-tilesets && npm run export-aseprite-assets",
 		"export-levels": "node scripts/ExportLevels.js",
 		"export-tilesets": "node scripts/ExportTilesets.js",
+		"export-aseprite-assets": "node scripts/ExportAsepriteAssets.js",
 
 		"eslint": "npx eslint source/** --fix"
 	},

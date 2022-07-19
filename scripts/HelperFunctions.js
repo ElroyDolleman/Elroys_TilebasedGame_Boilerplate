@@ -18,6 +18,22 @@ module.exports = {
 		});
 	},
 
+	getSubFolders: (directory) =>
+	{
+		return new Promise((resolve, reject) =>
+		{
+			fs.readdir(directory, (err, files) =>
+			{
+				if (err) {
+					reject(err);
+				}
+				else {
+					resolve(files.filter(file => { return !file.includes('.'); }));
+				}
+			});
+		});
+	},
+
 	runCommand: command =>
 	{
 		return new Promise((resolve, reject) =>
@@ -94,6 +110,16 @@ module.exports = {
 	getAssetsOutputFolder: () =>
 	{
 		const path = module.exports.getBuildFilesFolder() + 'assets/';
+
+		if (!fs.existsSync(path)) {
+			fs.mkdirSync(path);
+		}
+		return path;
+	},
+
+	getTempFilesFolder: () =>
+	{
+		const path = module.exports.getBuildFilesFolder() + 'temp_files/';
 
 		if (!fs.existsSync(path)) {
 			fs.mkdirSync(path);
