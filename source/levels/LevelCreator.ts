@@ -5,26 +5,25 @@ import { Tile, TileConfig } from './Tile';
 
 export class LevelCreator
 {
-	public readonly scene: Phaser.Scene;
-
+	private readonly _scene: Phaser.Scene;
 	private _cachedTilesets: TilesetJsonData[];
 
 	public constructor(scene: Phaser.Scene)
 	{
-		this.scene = scene;
+		this._scene = scene;
 	}
 
 	public async generateLevel(name: string): Promise<void>
 	{
-		let levelData = await AssetLoader.loadJson(name, this.scene) as LevelJsonData;
+		let levelData = await AssetLoader.loadJson(name, this._scene) as LevelJsonData;
 		this._cachedTilesets = [];
 
 		for (let i = 0; i < levelData.tilesets.length; i++)
 		{
 			const tilesetInfo = levelData.tilesets[i];
 
-			let tilesetData = await AssetLoader.loadJson(tilesetInfo.name, this.scene) as TilesetJsonData;
-			await AssetLoader.loadSpritesheet(tilesetInfo.name, { frameWidth: tilesetData.tilewidth, frameHeight: tilesetData.tileheight });
+			let tilesetData = await AssetLoader.loadJson(tilesetInfo.name, this._scene) as TilesetJsonData;
+			await AssetLoader.loadSpritesheet(tilesetInfo.name, { frameWidth: tilesetData.tilewidth, frameHeight: tilesetData.tileheight }, this._scene);
 
 			this._cachedTilesets.push(tilesetData);
 		}
@@ -64,7 +63,7 @@ export class LevelCreator
 			let tileData = tilesetData.tiles[tileNum];
 
 			let tile = new Tile({
-				scene: this.scene,
+				scene: this._scene,
 				tilesetName: tilesetData.name,
 				tileId: tileData ? tileData.id : tileNum,
 				properties: tileData ? tileData.properties : [],
