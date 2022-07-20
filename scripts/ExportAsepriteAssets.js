@@ -22,11 +22,12 @@ let exportAsepriteAssets = async() =>
 		{
 			// Save all aseprite files as png's
 			let name = files[j].split('.aseprite')[0];
-			await helperFuncs.runCommand('aseprite -b ' + folder + files[j] + ' --save-as ' + output + name + '.png');
+			await helperFuncs.runCommand('aseprite -b ' + folder + files[j] + ' --save-as ' + output + name + '_00.png ');
 		}
 	}
 
 	folders = await helperFuncs.getSubFolders(tempFilesFolder);
+	let animations = {};
 
 	for (let i = 0; i < folders.length; i++)
 	{
@@ -64,16 +65,43 @@ let exportAsepriteAssets = async() =>
 		let resultFiles = await packAsync(images, packerOptions);
 
 		// JSON
-		const jsonOutput = resultFiles[0];
-		let jsonString = jsonOutput.buffer.toString();
+		let jsonResult = resultFiles[0];
+		let jsonString = jsonResult.buffer.toString();
 		jsonString = jsonString.replaceAll(folder, '');
 
-		await helperFuncs.writeFile(outputFolder + jsonOutput.name, jsonString);
+		let jsonOutput = JSON.parse(jsonString);
+		let frames = jsonOutput.textures[0].frames;
+
+		frames.forEach(element =>
+		{
+			if (!element.filename.includes('_00')) {
+				return;
+			}
+
+			let animName = element.filename.split('_00')[0];
+
+			let copyArray = frames.filter(f => {
+				return f.filename.includes(animName);
+			});
+
+			animations[animName] = {
+				frames: copyArray.length,
+				isSingleFrame: copyArray.length === 1
+			};
+
+			if (copyArray.length === 1) {
+				element.filename = animName;
+			}
+		});
+
+		await helperFuncs.writeFile(outputFolder + jsonResult.name, JSON.stringify(jsonOutput));
 
 		// IMAGE
-		const imageOutput = resultFiles[1];
+		let imageOutput = resultFiles[1];
 		await helperFuncs.writeFile(outputFolder + imageOutput.name, imageOutput.buffer);
 	}
+
+	await helperFuncs.writeFile(outputFolder + 'animation_data.json', JSON.stringify(animations));
 }
 
 console.log('\x1b[35m%s\x1b[0m', 'Start exporting aseprites assets... ^o^');
