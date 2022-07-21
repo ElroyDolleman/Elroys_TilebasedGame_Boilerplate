@@ -1,4 +1,4 @@
-import { TileConfigs } from '../configs/GameConfigs';
+import { TileConfigs } from '../configs/TileConfigs';
 import { AssetLoader } from '../utils/AssetLoader';
 import { LevelJsonData, TileLayerData, TilePropertyData, TilesetJsonData } from './LevelEditorTypes';
 import { Tile, TileConfig } from './Tile';

@@ -1,5 +1,6 @@
 import { CollisionResult } from '../collision/CollisionManager';
 import { ICollidable } from '../collision/ICollidable';
+import { IRectangle } from '../utils/IRectangle';
 import { TimeUtil } from '../utils/TimeUtil';
 
 export abstract class Entity implements ICollidable
@@ -27,8 +28,13 @@ export abstract class Entity implements ICollidable
 		return new Phaser.Math.Vector2(this.hitbox.x, this.hitbox.y);
 	}
 
-	public speed: Phaser.Math.Vector2;
-	private _hitbox: Phaser.Geom.Rectangle;
+	public speed: Phaser.Math.Vector2 = new Phaser.Math.Vector2(0, 0);
+	private readonly _hitbox: Phaser.Geom.Rectangle;
+
+	public constructor(hitbox: IRectangle)
+	{
+		this._hitbox = new Phaser.Geom.Rectangle(hitbox.x, hitbox.y, hitbox.width, hitbox.height);
+	}
 
 	public moveX(): void
 	{

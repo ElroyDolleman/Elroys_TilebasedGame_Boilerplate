@@ -1,5 +1,5 @@
 import { DebugUtil } from '../utils/DebugUtil';
-import { TileConfigs } from '../configs/GameConfigs';
+import { TileConfigs } from '../configs/TileConfigs';
 import { TilePropertyData } from './LevelEditorTypes';
 
 export enum TileTypes {

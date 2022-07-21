@@ -1,7 +1,7 @@
 {
 	"name": "elroys_tilebased_game_boilerplate",
 	"version": "0.0.1",
-	"description": "For tilebased games in Phaser 3, made for when I'm going to do game jams",
+	"description": "For tilebased games in Phaser 3, made for when I'm going to do Game Jams",
 	"main": "index.js",
 	"scripts": {
 		"build-dev": "webpack --env=type=dev",

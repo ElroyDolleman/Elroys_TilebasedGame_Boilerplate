@@ -31,12 +31,11 @@ let exportAsepriteAssets = async() =>
 
 	for (let i = 0; i < folders.length; i++)
 	{
-		console.log(folders[i]);
-
-		const folder = tempFilesFolder + folders[i] + '/';
+		const textureName = folders[i];
+		const folder = tempFilesFolder + textureName + '/';
 
 		const packerOptions = {
-			textureName: folders[i],
+			textureName,
 			width: 1024,
 			height: 1024,
 			fixedSize: false,
@@ -48,6 +47,8 @@ let exportAsepriteAssets = async() =>
 			removeFileExtension: true,
 			prependFolderName: true
 		};
+
+		console.log(textureName);
 
 		const files = await helperFuncs.getAllFilesOfType(folder, '.png');
 		let images = [];
@@ -85,8 +86,10 @@ let exportAsepriteAssets = async() =>
 			});
 
 			animations[animName] = {
+				name: animName,
 				frames: copyArray.length,
-				isSingleFrame: copyArray.length === 1
+				isSingleFrame: copyArray.length === 1,
+				texture: textureName
 			};
 
 			if (copyArray.length === 1) {

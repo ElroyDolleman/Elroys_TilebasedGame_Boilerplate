@@ -5,10 +5,10 @@ export enum PlayerStates {
 	Fall,
 }
 
-export const PlayerAnimationsInfo: { [key in PlayerStates]: { name: string, isSingleFrame: boolean } } =
+export const PlayerAnimationsMap: { [key in PlayerStates]: string } =
 {
-	[PlayerStates.Idle]: { name: 'character_walk1', isSingleFrame: true },
-	[PlayerStates.Walk]: { name: 'character_walk', isSingleFrame: false },
-	[PlayerStates.Jump]: { name: 'character_jump', isSingleFrame: true },
-	[PlayerStates.Fall]: { name: 'character_fall', isSingleFrame: true },
+	[PlayerStates.Idle]: 'character_idle',
+	[PlayerStates.Walk]: 'character_walk',
+	[PlayerStates.Jump]: 'character_jump',
+	[PlayerStates.Fall]: 'character_fall',
 };
